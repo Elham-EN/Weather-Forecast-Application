@@ -63,7 +63,10 @@ app.get("/weather", async (req, res) => {
       icon: data.current.condition.icon,
     });
   } catch (error) {
-    return res.send({ error: "Unable to find the location" });
+    return res
+      .status(404)
+      .setHeader("Content-Type", "application/json")
+      .send({ error: "Unable to find the location" });
   }
 });
 

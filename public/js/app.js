@@ -22,13 +22,13 @@ async function fetchWeatherForecast(address) {
     locationAPI.textContent = "Location: " + data.location;
     temp.textContent = "Temperature: " + data.temp + " C";
     weatherIcon.src = data.icon;
-    errorMsg.textContent = "";
+    //errorMsg.textContent = "";
   } catch (error) {
     const textnote = document.createTextNode(error.message);
     forecast.textContent = "";
     locationAPI.textContent = "";
     temp.textContent = "";
-    weatherIcon = "";
+    weatherIcon.src = "";
     errorMsg.appendChild(textnote);
     locationAPI.insertAdjacentElement("afterend", errorMsg);
   }
