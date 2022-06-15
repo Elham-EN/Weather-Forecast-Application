@@ -29,18 +29,18 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.get("", (req, res) => {
   //an object that contains all the variables the template should
   //have access to when rendering
-  res.render("index", { title: "Weather", name: "Andrew" });
+  res.render("index", { title: "Weather", name: "Elham" });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { title: "About Me", name: "Andrew Mead" });
+  res.render("about", { title: "About Me", name: "Elham" });
 });
 
 app.get("/help", (req, res) => {
   res.render("help", {
-    helpText: "This is some helpful text.",
+    helpText: "You can find the source code for this web application here",
     title: "Help",
-    name: "Andrew",
+    name: "Elham",
   });
 });
 
@@ -59,7 +59,8 @@ app.get("/weather", async (req, res) => {
     return res.send({
       forecast: data.current.condition.text,
       location: data.location.name,
-      address: address,
+      temp: data.current.temp_c,
+      icon: data.current.condition.icon,
     });
   } catch (error) {
     return res.send({ error: "Unable to find the location" });

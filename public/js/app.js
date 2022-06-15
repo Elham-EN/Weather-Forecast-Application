@@ -4,6 +4,8 @@ const weatherForm = document.querySelector("form");
 const search = document.querySelector("input");
 const forecast = document.querySelector("#forecast");
 const locationAPI = document.querySelector("#location");
+const temp = document.querySelector("#temp");
+const weatherIcon = document.querySelector("#icon");
 const errorMsg = document.createElement("p");
 
 async function fetchWeatherForecast(address) {
@@ -18,11 +20,15 @@ async function fetchWeatherForecast(address) {
     if (errExist) throw new Error(errExist);
     forecast.textContent = "Forecast: " + data.forecast;
     locationAPI.textContent = "Location: " + data.location;
+    temp.textContent = "Temperature: " + data.temp + " C";
+    weatherIcon.src = data.icon;
     errorMsg.textContent = "";
   } catch (error) {
     const textnote = document.createTextNode(error.message);
     forecast.textContent = "";
     locationAPI.textContent = "";
+    temp.textContent = "";
+    weatherIcon = "";
     errorMsg.appendChild(textnote);
     locationAPI.insertAdjacentElement("afterend", errorMsg);
   }
