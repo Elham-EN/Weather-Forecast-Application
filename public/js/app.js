@@ -8,9 +8,10 @@ const errorMsg = document.createElement("p");
 
 async function fetchWeatherForecast(address) {
   try {
-    const response = await fetch(
-      `http://localhost:3000/weather?address=${address}&country=AU`
-    );
+    //Remove the localhost (since we going to deploy it on heroku)
+    //(http://localhost:3000) - this will make sure to use localhost if
+    //running on localhost or use heroku url when running on heroku
+    const response = await fetch(`/weather?address=${address}&country=AU`);
     const data = await response.json(); //return JS object
     const errExist = data.error ? data.error : false;
     errorMsg.textContent = "";

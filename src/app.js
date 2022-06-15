@@ -77,6 +77,7 @@ app.get("*", (req, res) => {
 });
 
 //Listen to the express server
+//port will listen to env PORT if it exist, otherwise listen to port 3000
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log("Server is up on port 3000");
